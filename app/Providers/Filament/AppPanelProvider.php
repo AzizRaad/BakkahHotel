@@ -30,7 +30,12 @@ class AppPanelProvider extends PanelProvider
                 MenuItem::make()
                     ->label('profile')
                     ->icon('heroicon-o-cog-6-tooth')
-                    ->url('/profile')
+                    ->url('/profile'),
+                MenuItem::make()
+                    ->label('admin')
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->url('/admin')
+                    ->visible(fn (): bool => auth()->user()->isAdmin()),
             ])
             ->colors([
                 'primary' => Color::Amber,

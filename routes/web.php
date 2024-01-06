@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Auth\Events\Authenticated;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('frontend.index');
+})->name('homepage');
 
 // Route::get('/')
 
@@ -32,3 +34,5 @@ require __DIR__ . '/auth.php';
 Route::get('/admin/login', function () {
     return redirect()->to('/login');
 })->name('filament.admin.auth.login');
+
+Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
