@@ -8,9 +8,12 @@
         <!-- Email Address -->
         <div>
             <x-input-label for="login" :value="__('Email/Username')" />
-            <x-text-input id="login" class="block mt-1 w-full" type="text" name="login" :value="old('login')" required autofocus autocomplete="username" />
-            {{-- <x-input-error :messages="$errors->get('email')" class="mt-2" /> --}}
+            <x-text-input id="login" class="block mt-1 w-full" type="text" name="login" :value="old('login')" required autofocus autocomplete="username"
+            />
         </div>
+        @error('login')
+        <span class="mb-4 text-sm text-red-600 rounded-lg bg-red-50" role="alert"> {{ $message }} </span>
+        @enderror
 
         <!-- Password -->
         <div class="mt-4">

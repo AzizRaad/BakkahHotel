@@ -19,7 +19,7 @@ class SupervisorRole
             $request->user()->role !== 'supervisor'
             && $request->user()->role !== 'admin'
         ) {
-            return redirect('dashboard');
+            return redirect('/app');
         }
         return $next($request);
     }

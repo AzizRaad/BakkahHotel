@@ -17,9 +17,9 @@ class AdminRole
     {
         if ($request->user()->role !== 'admin') {
             if ($request->user()->role === 'supervisor') {
-                return redirect('/supervisor/dashboard');
+                return redirect('/supervisor');
             }
-            return redirect('dashboard');
+            return redirect('/app');
         }
         return $next($request);
     }
