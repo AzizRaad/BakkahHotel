@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Auth\Events\Authenticated;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,5 @@ Route::get('/admin/login', function () {
 })->name('filament.admin.auth.login');
 
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
+
+Route::get('/dashboard', [UserController::class, 'dashboardRedirect']);
