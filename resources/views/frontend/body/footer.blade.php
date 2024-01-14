@@ -5,7 +5,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
                         <div class="footer-logo">
-                            <a href="index.html">
+                            <a href="/">
                                 <img src="{{asset('frontend/assets/img/logos/footer-logo1.png')}}" alt="Images">
                             </a>
                         </div>
@@ -15,15 +15,15 @@
                         <ul class="footer-list-contact">
                             <li>
                                 <i class='bx bx-home-alt'></i>
-                                <a href="#">An Naseem, Makkah, KSA</a>
+                                <a href="https://maps.app.goo.gl/E474PwpDRvtSZAuk8">An Naseem, Makkah, KSA</a>
                             </li>
                             <li>
                                 <i class='bx bx-phone-call'></i>
-                                <a href="tel:+1-(123)-456-7890">+966 59 272 4245</a>
+                                <a href="">+966 59 272 4245</a>
                             </li>
                             <li>
                                 <i class='bx bx-envelope'></i>
-                                <a href="mailto:me@azizraad.com">me@azizraad.com</a>
+                                <a href="">me@azizraad.com</a>
                             </li>
                         </ul>
                     </div>
@@ -34,7 +34,7 @@
                         <h3>Links</h3>
                         <ul class="footer-list">
                             <li>
-                                <a href="about.html" target="_blank">
+                                <a href="/about" target="_blank">
                                     <i class='bx bx-caret-right'></i>
                                     About Us
                                 </a>
@@ -66,13 +66,13 @@
                         <h3>Useful Links</h3>
                         <ul class="footer-list">
                             <li>
-                                <a href="index.html" target="_blank">
+                                <a href="/" target="_blank">
                                     <i class='bx bx-caret-right'></i>
                                     Home
                                 </a>
                             </li>
                             <li>
-                                <a href="faq.html" target="_blank">
+                                <a href="" target="_blank">
                                     <i class='bx bx-caret-right'></i>
                                     FAQ
                                 </a>
@@ -84,7 +84,7 @@
                                 </a>
                             </li> --}}
                             <li>
-                                <a href="contact.html" target="_blank">
+                                <a href="/contact" target="_blank">
                                     <i class='bx bx-caret-right'></i>
                                     Contact Us
                                 </a>

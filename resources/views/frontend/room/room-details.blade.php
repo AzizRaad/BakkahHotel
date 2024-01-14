@@ -96,11 +96,7 @@
                                 <img src="{{ asset('frontend/assets/img/room/room-details-img3.jpg') }}" alt="Images">
                             </div>
                         </div>
-
-
-
-
-
+                        
                         <div class="room-details-title">
                             <h2>Double Bed Suits With Royal Express and Super Duplex Feelings</h2>
                             <ul>
@@ -117,9 +113,6 @@
                                 {{ $room->description }}
                             </p>
 
-
-
-
                             <div class="side-bar-plan">
                                 <h3>Basic Plan Facilities</h3>
                                 <ul>
@@ -130,16 +123,10 @@
                                             </a>
                                         </li>
                                     @endforeach
-
                                 </ul>
                             </div>
-
-
                             <div class="row">
                                 <div class="col-lg-6">
-
-
-
                                     <div class="services-bar-widget">
                                         <div class="side-bar-list">
                                             <ul>
@@ -152,14 +139,7 @@
                                             </ul>
                                         </div>
                                     </div>
-
-
-
-
                                 </div>
-
-
-
                                 <div class="col-lg-6">
                                     <div class="services-bar-widget">
                                         <div class="side-bar-list">

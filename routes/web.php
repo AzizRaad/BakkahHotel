@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\Authenticated;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\RoomController;
-use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +22,6 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('frontend.index');
 })->name('homepage');
-
-// Route::get('/')
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -46,3 +45,6 @@ Route::get('/room-details/{room}', [RoomController::class, 'ShowRoomDetails']);
 Route::post('/booking-detail/{room}', [RoomController::class, 'checkout']);
 Route::post('/place-order/{room}', [RoomController::class, 'placeOrder']);
 
+Route::get('/about', [HomeController::class, 'ShowAbout']);
+Route::get('/all-room', [HomeController::class, 'ShowAllRoom']);
+Route::get('/contact', [HomeController::class, 'ShowContact']);

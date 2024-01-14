@@ -19,13 +19,11 @@ return new class extends Migration
                 ->references('id')
                 ->on('room_types')
                 ->cascadeOnDelete();
-            $table->string('total_adults');
             $table->string('room_capacity');
             $table->string('price');
             $table->string('size');
             $table->string('view');
             $table->string('bed_style');
-            $table->integer('discount')->default(0);
             $table->string('description');
             $table->enum('status', ['available', 'occupied'])->default('available');
             $table->timestamps();

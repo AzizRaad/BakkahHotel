@@ -9,7 +9,7 @@ class Room extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['room_type_id','room_no','total_adults','room_capacity','price','size','view','bed_style','discount','description','status'];
+    protected $fillable = ['room_type_id','room_no','room_capacity','price','size','view','bed_style','description','status'];
 
     // protected $guarded =[];
 

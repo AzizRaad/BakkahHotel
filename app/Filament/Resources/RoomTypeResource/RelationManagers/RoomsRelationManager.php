@@ -37,14 +37,12 @@ class RoomsRelationManager extends RelationManager
                     //  $room->roomType
                     // ),
                     TextInput::make('room_no')->required(),
-                    TextInput::make('total_adults')->required(),
                     TextInput::make('room_capacity')->required(),
                     TextInput::make('price')->required(),
                     TextInput::make('size')->required()
                     ->hint('size in m2'),
                     TextInput::make('view')->required(),
                     TextInput::make('bed_style')->required(),
-                    TextInput::make('discount')->required(),
                     Textarea::make('description')->required()
                     ->columnSpanFull(),
                     Select::make('status')
@@ -67,13 +65,11 @@ class RoomsRelationManager extends RelationManager
             ->columns([
                 TextColumn::make('id'),
                 TextColumn::make('roomtype.name'),
-                TextColumn::make('total_adults'),
                 TextColumn::make('room_capacity'),
                 TextColumn::make('price'),
                 TextColumn::make('size'),
                 TextColumn::make('view'),
                 TextColumn::make('bed_style'),
-                TextColumn::make('discount'),
                 TextColumn::make('description'),
                 TextColumn::make('status'),
             ])

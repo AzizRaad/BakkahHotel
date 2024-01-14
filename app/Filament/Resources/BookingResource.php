@@ -29,6 +29,18 @@ class BookingResource extends Resource
     {
         return $form
             ->schema([
+                Card::make()->Schema([
+                    Select::make('room_id')
+                    ->relationship('room','id')
+                    ->required()
+                    ->preload(),
+                    Select::make('user_id')
+                    ->relationship('user','name')
+                    ->required()
+                    ->preload(),
+                    DatePicker::make('check_in')->required(),
+                    DatePicker::make('check_out')->required(),
+                ])->columns(2)
             ]);
     }
 
@@ -38,7 +50,7 @@ class BookingResource extends Resource
             ->columns([
                 TextColumn::make('id'),
                 TextColumn::make('room.id'),
-                TextColumn::make('user.id'),
+                TextColumn::make('user.name'),
                 TextColumn::make('check_in')->label('check in date'),
                 TextColumn::make('check_out')->label('check out date'),
             ])
