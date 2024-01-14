@@ -21,6 +21,10 @@ class Room extends Model
         return $this->belongsToMany(Facility::class);
     }
 
+    public function booking() {
+        return $this->hasOne(Booking::class);
+    }
+
     public function facility_rooms() {
         return $this->hasManyThrough(
             Facility::class,
