@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
 use Illuminate\Support\Facades\Schema;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Actions\ActionGroup;
@@ -24,8 +25,6 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class RoomResource extends Resource
 {
-
-    public Room $room;
 
     protected static ?string $model = Room::class;
 
@@ -40,14 +39,18 @@ class RoomResource extends Resource
                     ->relationship('roomtype','name')
                     ->required()
                     ->preload(),
+                    TextInput::make('room_no')->required(),
                     TextInput::make('total_adults')->required(),
                     TextInput::make('room_capacity')->required(),
                     TextInput::make('price')->required(),
-                    TextInput::make('size')->required(),
+                    TextInput::make('size')->required()
+                    ->hint('size in m2'),
                     TextInput::make('view')->required(),
                     TextInput::make('bed_style')->required(),
                     TextInput::make('discount')->required(),
-                    TextInput::make('description')->required(),
+                    Textarea::make('description')
+                    ->columnSpanFull()
+                    ->required(),
                     Select::make('status')
                     ->options([
                         "available" => "available",
@@ -64,8 +67,6 @@ class RoomResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-        // ->relationship(fn (): HasManyThrough => $this->room->facilityRooms())
-        // ->inverseRelationship('rooms')
             ->columns([
                 TextColumn::make('id'),
                 TextColumn::make('roomtype.name'),
@@ -76,7 +77,6 @@ class RoomResource extends Resource
                 TextColumn::make('view'),
                 TextColumn::make('bed_style'),
                 TextColumn::make('discount'),
-                TextColumn::make('description'),
                 TextColumn::make('status'),
                 TextColumn::make('facilities.fac_name'),
             ])

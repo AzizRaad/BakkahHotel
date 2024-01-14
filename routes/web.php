@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Auth\Events\Authenticated;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -39,3 +40,9 @@ Route::get('/admin/login', function () {
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
 
 Route::get('/dashboard', [UserController::class, 'dashboardRedirect']);
+
+Route::get('/room-details/{room}', [RoomController::class, 'ShowRoomDetails']);
+
+Route::post('/booking-detail/{room}', [RoomController::class, 'checkout']);
+Route::post('/place-order/{room}', [RoomController::class, 'placeOrder']);
+

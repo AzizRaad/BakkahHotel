@@ -33,12 +33,12 @@ class AuthenticatedSessionController extends Controller
 
 
         $notification =array(
-            'message' => 'User'.auth()->user()->name.'Logged in Succefull',
+            'message' => 'User '.auth()->user()->name.' Logged in Succefull',
             'alert-type' => 'success'
         );
 
         $url = '';
-        
+
         if($request->user()->role === 'admin'){
             $url = '/admin';
         }elseif($request->user()->role === 'supervisor')

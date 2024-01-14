@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('room_numbers', function (Blueprint $table) {
+        Schema::create('seasons', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBiginteger('room_id');
-            $table->foreign('room_id')->references('id')
-                ->on('rooms')->onDelete('cascade');
-            $table->string('room_no');
+            $table->date('start');
+            $table->date('end');
+            $table->integer('increasement');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('room_numbers');
+        Schema::dropIfExists('seasons');
     }
 };

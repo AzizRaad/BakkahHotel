@@ -9,30 +9,26 @@ class Room extends Model
 {
     use HasFactory;
 
-    // protected $fillable = ['room_type_id','total_adults','room_capacity','price','size','view','bed_style','discount','description','status'];
+    protected $fillable = ['room_type_id','room_no','total_adults','room_capacity','price','size','view','bed_style','discount','description','status'];
 
-    protected $guarded =[];
+    // protected $guarded =[];
 
     public function roomType() {
         return $this->belongsTo(RoomType::class);
-    }
-
-    public function roomNumbers(){
-        return $this->hasMany(RoomNumber::class);
     }
 
     public function facilities() {
         return $this->belongsToMany(Facility::class);
     }
 
-    // public function facilityRooms() {
-    //     return $this->hasManyThrough(
-    //         Facility::class,
-    //         facility_room::class,
-    //         'room_id',
-    //         'id',
-    //         'id',
-    //         'facility_id'
-    //     );
-    // }
+    public function facility_rooms() {
+        return $this->hasManyThrough(
+            Facility::class,
+            facility_room::class,
+            'room_id',
+            'id',
+            'id',
+            'facility_id'
+        );
+    }
 }

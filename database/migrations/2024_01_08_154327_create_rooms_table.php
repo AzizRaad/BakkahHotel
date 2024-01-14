@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBiginteger('roomtype_id');
-            $table->foreign('roomtype_id')->references('id')
-                 ->on('room_types')->onDelete('cascade');
+            $table->string('room_no');
+            $table->unsignedBiginteger('room_type_id');
+            $table->foreign('room_type_id')
+                ->references('id')
+                ->on('room_types')
+                ->cascadeOnDelete();
             $table->string('total_adults');
             $table->string('room_capacity');
             $table->string('price');
@@ -24,7 +27,7 @@ return new class extends Migration
             $table->string('bed_style');
             $table->integer('discount')->default(0);
             $table->string('description');
-            $table->enum('status',['available','occupied'])->default('available');
+            $table->enum('status', ['available', 'occupied'])->default('available');
             $table->timestamps();
         });
     }

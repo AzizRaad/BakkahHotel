@@ -9,10 +9,6 @@
         @include('frontend.home.room-area')
         <!-- Room Area 1 + Room Area 2 End -->
 
-        <!-- Services Area Three -->
-        @include('frontend.home.services-area')
-        <!-- Services Area Three End -->
-
         <!-- FAQ Area -->
         @include('frontend.home.faq')
         <!-- FAQ Area End -->
