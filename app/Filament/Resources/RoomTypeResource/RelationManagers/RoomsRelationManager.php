@@ -33,6 +33,10 @@ class RoomsRelationManager extends RelationManager
                     ->relationship('roomtype','name')
                     ->required()
                     ->preload(),
+                    Select::make('building_id')
+                    ->relationship('building','name')
+                    ->required()
+                    ->preload(),
                     // Placeholder::make('room_type_id')->content(fn(Room $room) =>
                     //  $room->roomType
                     // ),
@@ -64,6 +68,7 @@ class RoomsRelationManager extends RelationManager
             ->recordTitleAttribute('rooms')
             ->columns([
                 TextColumn::make('id'),
+                TextColumn::make('building.name'),
                 TextColumn::make('roomtype.name'),
                 TextColumn::make('room_capacity'),
                 TextColumn::make('price'),

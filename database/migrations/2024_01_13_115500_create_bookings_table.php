@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBiginteger('building_id');
+            $table->foreign('building_id')
+                ->references('id')
+                ->on('buildings')
+                ->cascadeOnDelete();
             $table->unsignedBiginteger('room_id');
             $table->foreign('room_id')
                 ->references('id')

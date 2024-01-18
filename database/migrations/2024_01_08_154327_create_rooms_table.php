@@ -19,6 +19,11 @@ return new class extends Migration
                 ->references('id')
                 ->on('room_types')
                 ->cascadeOnDelete();
+            $table->unsignedBiginteger('building_id');
+            $table->foreign('building_id')
+                ->references('id')
+                ->on('buildings')
+                ->cascadeOnDelete();
             $table->string('room_capacity');
             $table->string('price');
             $table->string('size');

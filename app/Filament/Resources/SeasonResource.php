@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Actions\ActionGroup;
 use Filament\Forms\Components\DatePicker;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\SeasonResource\Pages;
@@ -48,8 +49,11 @@ class SeasonResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
+                ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])            ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

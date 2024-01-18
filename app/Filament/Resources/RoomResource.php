@@ -39,6 +39,10 @@ class RoomResource extends Resource
                     ->relationship('roomtype','name')
                     ->required()
                     ->preload(),
+                    Select::make('building_id')
+                    ->relationship('building','name')
+                    ->required()
+                    ->preload(),
                     TextInput::make('room_no')->required(),
                     TextInput::make('room_capacity')->required(),
                     TextInput::make('price')->required(),
@@ -67,6 +71,7 @@ class RoomResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id'),
+                TextColumn::make('building.name'),
                 TextColumn::make('roomtype.name'),
                 TextColumn::make('room_capacity'),
                 TextColumn::make('price'),

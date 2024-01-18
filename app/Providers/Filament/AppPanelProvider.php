@@ -36,6 +36,10 @@ class AppPanelProvider extends PanelProvider
                     ->icon('heroicon-o-cog-6-tooth')
                     ->url('/admin')
                     ->visible(fn (): bool => auth()->user()->isAdmin()),
+                    MenuItem::make()
+                    ->label('Homepage')
+                    ->icon('heroicon-o-user')
+                    ->url('/')
             ])
             ->colors([
                 'primary' => Color::Amber,

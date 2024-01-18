@@ -37,7 +37,11 @@ class AdminPanelProvider extends PanelProvider
                 MenuItem::make()
                     ->label('profile')
                     ->icon('heroicon-o-user')
-                    ->url('/profile')
+                    ->url('/profile'),
+                MenuItem::make()
+                    ->label('Homepage')
+                    ->icon('heroicon-o-user')
+                    ->url('/')
             ])
             ->colors([
                 'primary' => Color::Amber,

@@ -32,11 +32,10 @@
                                         <div class="form-group">
                                             <label>Check in</label>
                                             <div class="input-group">
-                                                <input id="datetimepicker" type="text" class="form-control"
-                                                placeholder="{{ date('m/d/y') }}" value="{{ date('m/d/y') }}" name="check_in">
+                                                <input type="date" class="form-control" value="{{ date('Y-m-d') }}"
+                                                    min="{{ date('Y-m-d') }}" name="check_in">
                                                 <span class="input-group-addon"></span>
                                             </div>
-                                            <i class='bx bxs-calendar'></i>
                                         </div>
                                     </div>
 
@@ -44,11 +43,10 @@
                                         <div class="form-group">
                                             <label>Check Out</label>
                                             <div class="input-group">
-                                                <input id="datetimepicker-check" type="text" class="form-control"
-                                                placeholder="{{ date('m/d/y') }}" value="{{ date('m/d/y') }}" name="check_out">
+                                                <input type="date" class="form-control" value="{{ date('Y-m-d') }}"
+                                                min="{{ date('Y-m-d') }}" name="check_out">
                                                 <span class="input-group-addon"></span>
                                             </div>
-                                            <i class='bx bxs-calendar'></i>
                                         </div>
                                     </div>
 
@@ -56,8 +54,8 @@
                                         <div class="form-group">
                                             <label>Numbers of Persons</label>
                                             <select class="form-control">
-                                                @for ($i=1; $i <= $room->room_capacity; $i++)
-                                                <option>{{ $i }}</option>
+                                                @for ($i = 1; $i <= $room->room_capacity; $i++)
+                                                    <option>{{ $i }}</option>
                                                 @endfor
                                             </select>
                                         </div>
@@ -66,7 +64,9 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Room Number</label>
-                                            <input class="form-control mb-3" type="text" placeholder="{{ $room->room_no }}" aria-label="Disabled input example" disabled="">
+                                            <input class="form-control mb-3" type="text"
+                                                placeholder="{{ $room->room_no }}" aria-label="Disabled input example"
+                                                disabled="">
                                         </div>
                                     </div>
 
@@ -96,15 +96,18 @@
                                 <img src="{{ asset('frontend/assets/img/room/room-details-img3.jpg') }}" alt="Images">
                             </div>
                         </div>
-                        
+
                         <div class="room-details-title">
                             <h2>Double Bed Suits With Royal Express and Super Duplex Feelings</h2>
                             <ul>
-
+                                <li>
+                                    <b> Building : {{ $room->building->name }} Hotel</b>
+                                </li>
+                            </ul>
+                            <ul>
                                 <li>
                                     <b> Basic : ${{ $room->price }}/Night/Room</b>
                                 </li>
-
                             </ul>
                         </div>
 
@@ -118,9 +121,9 @@
                                 <ul>
                                     @foreach ($room->facility_rooms as $facility)
                                         <li>
-                                            <a href="#">
+                                            <b>
                                                 {{ $facility->fac_name }}
-                                            </a>
+                                            </b>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -131,7 +134,8 @@
                                         <div class="side-bar-list">
                                             <ul>
                                                 <li>
-                                                    <a href="#"> <b>Capacity : </b> {{ $room->room_capacity }} Person </a>
+                                                    <a href="#"> <b>Capacity : </b> {{ $room->room_capacity }} Person
+                                                    </a>
                                                 </li>
                                                 <li>
                                                     <a href="#"> <b>Size : </b> {{ $room->size }} m2 </a>
@@ -172,56 +176,59 @@
                 <h2>Our Related Offer</h2>
             </div>
             @php
-                $rooms = App\Models\Room::where('id','!=',$room->id)
-                ->orderBy('created_at')
-                ->limit(2)
-                ->get();
+                $rooms = App\Models\Room::where('id', '!=', $room->id)
+                    ->where('building_id', $room->building_id)
+                    ->orderBy('created_at')
+                    ->limit(2)
+                    ->get();
             @endphp
             <div class="row ">
                 @foreach ($rooms as $singleroom)
-                <div class="col-lg-6">
-                    <div class="room-card-two">
-                        <div class="row align-items-center">
-                            <div class="col-lg-5 col-md-4 p-0">
-                                <div class="room-card-img">
-                                    <a href="/room-details/{{ $singleroom->id }}">
-                                        <img src="{{asset('frontend/assets/img/room/room-style-img1.jpg')}}" alt="Images">
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-7 col-md-8 p-0">
-                                <div class="room-card-content">
-                                    <h3>
-                                        <a href="/room-details/{{ $singleroom->id }}">{{ $singleroom->roomType->name }} Room</a>
-                                    </h3>
-                                    <span>${{ $singleroom->price }} / Per Night </span>
-                                    <div class="rating">
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
-                                        <i class='bx bxs-star'></i>
+                    <div class="col-lg-6">
+                        <div class="room-card-two">
+                            <div class="row align-items-center">
+                                <div class="col-lg-5 col-md-4 p-0">
+                                    <div class="room-card-img">
+                                        <a href="/room-details/{{ $singleroom->id }}">
+                                            <img src="{{ asset('frontend/assets/img/room/room-style-img1.jpg') }}"
+                                                alt="Images">
+                                        </a>
                                     </div>
-                                    <pre>{{ $singleroom->description }}</pre>
-                                    <ul>
-                                        <li><i class='bx bx-user'></i> {{ $singleroom->room_capacity }} Person</li>
-                                        <li><i class='bx bx-expand'></i> {{ $singleroom->size }}m2</li>
-                                    </ul>
+                                </div>
 
-                                    <ul>
-                                        <li><i class='bx bx-show-alt'></i> {{ $singleroom->view }} </li>
-                                        <li><i class='bx bxs-hotel'></i> {{ $singleroom->bed_style }} </li>
-                                    </ul>
+                                <div class="col-lg-7 col-md-8 p-0">
+                                    <div class="room-card-content">
+                                        <h3>
+                                            <a href="/room-details/{{ $singleroom->id }}">{{ $singleroom->roomType->name }}
+                                                Room</a>
+                                        </h3>
+                                        <span>${{ $singleroom->price }} / Per Night </span>
+                                        <div class="rating">
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                        </div>
+                                        <pre>{{ $singleroom->description }}</pre>
+                                        <ul>
+                                            <li><i class='bx bx-user'></i> {{ $singleroom->room_capacity }} Person</li>
+                                            <li><i class='bx bx-expand'></i> {{ $singleroom->size }}m2</li>
+                                        </ul>
 
-                                    <a href="/room-details/{{ $singleroom->id }}" class="book-more-btn">
-                                        Book Now
-                                    </a>
+                                        <ul>
+                                            <li><i class='bx bx-show-alt'></i> {{ $singleroom->view }} </li>
+                                            <li><i class='bx bxs-hotel'></i> {{ $singleroom->bed_style }} </li>
+                                        </ul>
+
+                                        <a href="/room-details/{{ $singleroom->id }}" class="book-more-btn">
+                                            Book Now
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>

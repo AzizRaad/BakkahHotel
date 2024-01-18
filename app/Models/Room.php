@@ -9,7 +9,7 @@ class Room extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['room_type_id','room_no','room_capacity','price','size','view','bed_style','description','status'];
+    protected $fillable = ['room_type_id','room_no','building_id','room_capacity','price','size','view','bed_style','description','status'];
 
     // protected $guarded =[];
 
@@ -23,6 +23,10 @@ class Room extends Model
 
     public function booking() {
         return $this->hasOne(Booking::class);
+    }
+
+    public function building() {
+        return $this->belongsTo(Building::class);
     }
 
     public function facility_rooms() {

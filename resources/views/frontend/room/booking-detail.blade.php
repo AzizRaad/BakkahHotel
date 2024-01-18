@@ -23,6 +23,7 @@
             <form action="/place-order/{{ $room->id }}" method="POST">
                 @csrf
                 <input type="hidden" name="room_id" value="{{ $room->id }}">
+                <input type="hidden" name="building_id" value="{{ $room->building_id }}">
                 <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                 <input type="hidden" name="check_in" value="{{ \Carbon\Carbon::parse($request->check_in)->format('Y-m-d') }}">
                 <input type="hidden" name="check_out" value="{{ \Carbon\Carbon::parse($request->check_out)->format('Y-m-d') }}">
@@ -36,10 +37,13 @@
 
                                     <div style="display: flex">
                                         <div style="padding-left: 10px;">
-                                            <a href=" " style="font-size: 20px; color: #595959;font-weight: bold">
+                                            <p style="font-size: 20px; color: #595959;font-weight: bold">
+                                                {{ $room->building->name }} Hotel
+                                            </p>
+                                            <p style="font-size: 20px; color: #595959;font-weight: bold">
                                                 {{ $room->roomType->name }} Room
-                                            </a>
-                                            <p><b>{{ $room->price }} / Night</b></p>
+                                            </p>
+                                            <p><b>${{ $room->price }} / Night</b></p>
                                         </div>
 
                                     </div>

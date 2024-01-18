@@ -89,6 +89,7 @@ class RoomController extends Controller
 
         Booking::create([
             'room_id' => $request->room_id,
+            'building_id' => $request->building_id,
             'user_id' => $request->user_id,
             'check_in' => $request->check_in,
             'check_out' => $request->check_out,

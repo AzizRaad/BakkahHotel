@@ -36,7 +36,11 @@ class SupervisorPanelProvider extends PanelProvider
                 MenuItem::make()
                     ->label('profile')
                     ->icon('heroicon-o-cog-6-tooth')
-                    ->url('/profile')
+                    ->url('/profile'),
+                    MenuItem::make()
+                    ->label('Homepage')
+                    ->icon('heroicon-o-user')
+                    ->url('/')
             ])
             ->colors([
                 'primary' => Color::Amber,
